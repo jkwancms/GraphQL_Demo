@@ -57,10 +57,16 @@ public class DemoGraphQlApplication {
 		return new Query(authorRepository, bookRepository);
 	}
 
+//	@Bean
+//	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
+//		return new Mutation(authorRepository, bookRepository);
+//	}
+
 	@Bean
-	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
-		return new Mutation(authorRepository, bookRepository);
+	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository) {
+		return new Mutation(authorRepository, bookRepository, gatewayRepository);
 	}
+
 
 	@Bean
 	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository) {

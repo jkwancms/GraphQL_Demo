@@ -12,7 +12,7 @@ public class Mutation implements GraphQLMutationResolver {
     private AuthorRepository authorRepository;
 //    private TaskRepository taskRepository;
 //    private FormFieldsRepository formFieldsRepository;
-//    private GatewayRepository gatewayRepository;
+    private GatewayRepository gatewayRepository;
 //    private SequenceFlowRepository sequenceFlowRepository;
 
 //    public Mutation( AuthorRepository authorRepository,BookRepository bookRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
@@ -24,12 +24,18 @@ public class Mutation implements GraphQLMutationResolver {
 //        this.sequenceFlowRepository = sequenceFlowRepository;
 //    }
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
-        this.authorRepository = authorRepository;
+//    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
+//        this.authorRepository = authorRepository;
+//        this.bookRepository = bookRepository;
+//    }
+
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
+        this.gatewayRepository = gatewayRepository;
     }
 
-//    public Mutation(TaskRepository taskRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+    //    public Mutation(TaskRepository taskRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
 //        this.taskRepository = taskRepository;
 //        this.formFieldsRepository = formFieldsRepository;
 //        this.gatewayRepository = gatewayRepository;
@@ -117,14 +123,14 @@ public class Mutation implements GraphQLMutationResolver {
 //
 //
 //
-//    public Gateway newGateway(String type) {
-//        Gateway gateway = new Gateway();
-//        gateway.setType(type);
-//
-//        gatewayRepository.save(gateway);
-//
-//        return gateway;
-//    }
+    public Gateway newGateway(String type) {
+        Gateway gateway = new Gateway();
+        gateway.setType(type);
+
+        gatewayRepository.save(gateway);
+
+        return gateway;
+    }
 //
 //    public SequenceFlow newSequenceFlow(String sourceId, String expression, String targetId) {
 //        SequenceFlow sf = new SequenceFlow();

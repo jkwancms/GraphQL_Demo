@@ -9,7 +9,7 @@ public class Query implements GraphQLQueryResolver {
     private AuthorRepository authorRepository;
 //    private TaskRepository taskRepository;
 //    private FormFieldsRepository formFieldsRepository;
-//    private GatewayRepository gatewayRepository;
+    private GatewayRepository gatewayRepository;
 //    private SequenceFlowRepository sequenceFlowRepository;
 
 //    public Query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
@@ -60,9 +60,9 @@ public class Query implements GraphQLQueryResolver {
 //    public Iterable<FormField> findAllFormFields() {
 //        return formFieldsRepository.findAll();
 //    }
-//    public Iterable<Gateway> findAllGateways() {
-//        return gatewayRepository.findAll();
-//    }
+    public Iterable<Gateway> findAllGateways() {
+        return gatewayRepository.findAll();
+    }
 //    public Iterable<SequenceFlow> findAllSequenceFlows() {
 //        return sequenceFlowRepository.findAll();
 //    }
@@ -73,9 +73,9 @@ public class Query implements GraphQLQueryResolver {
 //    public long countFormFields() {
 //        return formFieldsRepository.count();
 //    }
-//    public long countGateways() {
-//        return gatewayRepository.count();
-//    }
+    public long countGateways() {
+        return gatewayRepository.count();
+    }
 //    public long countSequenceFlows() {
 //        return sequenceFlowRepository.count();
 //    }
