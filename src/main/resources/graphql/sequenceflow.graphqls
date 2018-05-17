@@ -1,0 +1,6 @@
+type SequenceFlow{
+    id: ID!
+    sourceId: String!
+    targetId: String!
+    expression: String
+}

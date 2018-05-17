@@ -6,4 +6,7 @@ type Mutation {
   updateBookPageCount(pageCount: Int!, id: ID!) : Book!
 
   newGateway(type: String) : Gateway!
+
+  newSequenceFlow(sourceId: String!, targetId: String!, expression: String) : SequenceFlow!
+
 }

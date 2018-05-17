@@ -1,12 +1,14 @@
 type Query {
-  findAllAuthors: [Author]!
-  countAuthors: Long!
+    findAllAuthors: [Author]!
+    countAuthors: Long!
 
-  findAllBooks: [Book]!
-      countBooks: Long!
+    findAllBooks: [Book]!
+    countBooks: Long!
 
-  findAllGateways: [Gateway]!
-      countGateways: Long!
+    findAllGateways: [Gateway]!
+    countGateways: Long!
 
+    findAllSequenceFlows: [SequenceFlow]!
+    countSequenceFlows: Long!
 }
 

@@ -13,7 +13,7 @@ public class Mutation implements GraphQLMutationResolver {
 //    private TaskRepository taskRepository;
 //    private FormFieldsRepository formFieldsRepository;
     private GatewayRepository gatewayRepository;
-//    private SequenceFlowRepository sequenceFlowRepository;
+    private SequenceFlowRepository sequenceFlowRepository;
 
 //    public Mutation( AuthorRepository authorRepository,BookRepository bookRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
 //        this.bookRepository = bookRepository;
@@ -29,10 +29,11 @@ public class Mutation implements GraphQLMutationResolver {
 //        this.bookRepository = bookRepository;
 //    }
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository) {
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.gatewayRepository = gatewayRepository;
+        this.sequenceFlowRepository = sequenceFlowRepository;
     }
 
     //    public Mutation(TaskRepository taskRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
@@ -41,11 +42,7 @@ public class Mutation implements GraphQLMutationResolver {
 //        this.gatewayRepository = gatewayRepository;
 //        this.sequenceFlowRepository = sequenceFlowRepository;
 //    }
-//
-//    public Mutation(TaskRepository taskRepository, FormFieldsRepository formFieldsRepository) {
-//        this.taskRepository = taskRepository;
-//        this.formFieldsRepository = formFieldsRepository;
-//    }
+
 
     public Author newAuthor(String firstName, String lastName) {
         Author author = new Author();
@@ -132,26 +129,26 @@ public class Mutation implements GraphQLMutationResolver {
         return gateway;
     }
 //
-//    public SequenceFlow newSequenceFlow(String sourceId, String expression, String targetId) {
-//        SequenceFlow sf = new SequenceFlow();
-//        sf.setExpression(expression);
-//        sf.setSourceId(sourceId);
-//        sf.setTargetId(targetId);
-//
-//        sequenceFlowRepository.save(sf);
-//
-//        return sf;
-//    }
-//
-//    public SequenceFlow newSequenceFlow(String sourceId, String targetId) {
-//        SequenceFlow sf = new SequenceFlow();
-//        sf.setSourceId(sourceId);
-//        sf.setTargetId(targetId);
-//
-//        sequenceFlowRepository.save(sf);
-//
-//        return sf;
-//    }
+    public SequenceFlow newSequenceFlow(String sourceId, String expression, String targetId) {
+        SequenceFlow sf = new SequenceFlow();
+        sf.setExpression(expression);
+        sf.setSourceId(sourceId);
+        sf.setTargetId(targetId);
+
+        sequenceFlowRepository.save(sf);
+
+        return sf;
+    }
+
+    public SequenceFlow newSequenceFlow(String sourceId, String targetId) {
+        SequenceFlow sf = new SequenceFlow();
+        sf.setSourceId(sourceId);
+        sf.setTargetId(targetId);
+
+        sequenceFlowRepository.save(sf);
+
+        return sf;
+    }
 //
 //    public Task newTask(String name, String className, String classBeanNameReference, List<FormField> ListofFormFields) {
 //        Task task = new Task();

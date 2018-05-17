@@ -53,8 +53,8 @@ public class DemoGraphQlApplication {
 	}
 
 	@Bean
-	public Query query(AuthorRepository authorRepository, BookRepository bookRepository) {
-		return new Query(authorRepository, bookRepository);
+	public Query query(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+		return new Query(authorRepository, bookRepository, gatewayRepository, sequenceFlowRepository);
 	}
 
 //	@Bean
@@ -63,13 +63,13 @@ public class DemoGraphQlApplication {
 //	}
 
 	@Bean
-	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository) {
-		return new Mutation(authorRepository, bookRepository, gatewayRepository);
+	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+		return new Mutation(authorRepository, bookRepository, gatewayRepository, sequenceFlowRepository);
 	}
 
 
 	@Bean
-	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository) {
+	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
 		return (args) -> {
 			Author author = new Author("Herbert", "Schildt");
 			authorRepository.save(author);
@@ -81,8 +81,8 @@ public class DemoGraphQlApplication {
 //			List<FormField> tempList = new ArrayList<>();
 //			tempList.add(ff01);
 //			formFieldsRepository.save(tempList);
-//			gatewayRepository.save(new Gateway("Exclusive"));
-//			sequenceFlowRepository.save(new SequenceFlow("123","456"));
+			gatewayRepository.save(new Gateway("Exclusive"));
+			sequenceFlowRepository.save(new SequenceFlow("123","456"));
 //			taskRepository.save(new Task("Task 01",tempList,"class 01","Reference 01"));
 
 		};
