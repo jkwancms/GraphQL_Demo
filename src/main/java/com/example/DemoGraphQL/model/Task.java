@@ -14,7 +14,7 @@ public class Task {
 //    private ArrayList<FormField> formFields;
     @OneToMany
     @JoinColumn(name = "formField_id",updatable = false)
-    private Collection<FormField> formFields = new HashSet();
+    private Collection<FormField> formFields;
 
     private String className;
 

@@ -5,8 +5,7 @@ import com.example.DemoGraphQL.exception.*;
 import com.example.DemoGraphQL.model.*;
 import com.example.DemoGraphQL.repository.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class Mutation implements GraphQLMutationResolver {
     private BookRepository bookRepository;
@@ -135,7 +134,7 @@ public class Mutation implements GraphQLMutationResolver {
 //        return task;
 //    }
 
-    public Task newTask(String name, List<FormField> ListofFormFields , String className, String classBeanNameReference) {
+    public Task newTask(String name, Collection<FormField> ListofFormFields , String className, String classBeanNameReference) {
         Task task = new Task();
         task.setName(name);
         task.setClassBeanNameReference(classBeanNameReference);
