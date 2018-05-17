@@ -63,6 +63,11 @@ public class DemoGraphQlApplication {
 //	}
 
 	@Bean
+	public TaskResolver getTaskResolver(FormFieldRepository repository){
+		return new TaskResolver(repository);
+	}
+
+	@Bean
 	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
 		return new Mutation(authorRepository, bookRepository, formFieldRepository, gatewayRepository, sequenceFlowRepository, taskRepository);
 	}

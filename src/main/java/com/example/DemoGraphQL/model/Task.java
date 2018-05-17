@@ -1,7 +1,7 @@
 package com.example.DemoGraphQL.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.*;
 
 @Entity
 public class Task {
@@ -12,7 +12,9 @@ public class Task {
     private String name;
 
 //    private ArrayList<FormField> formFields;
-    private ArrayList<FormField> formFields;
+    @OneToMany
+    @JoinColumn(name = "formField_id",updatable = false)
+    private Collection<FormField> formFields = new HashSet();
 
     private String className;
 
@@ -37,16 +39,16 @@ public class Task {
 //        this.className = className;
 //        this.classBeanNameReference = classBeanNameReference;
 //    }
-    public Task(String name, ArrayList<FormField> formFields, String className, String classBeanNameReference) {
+    public Task(String name, Collection<FormField> formFields, String className, String classBeanNameReference) {
         this.name = name;
-        this.formFields = formFields;
+        this.formFields = formFields!=null?formFields:Collections.emptyList();
         this.className = className;
         this.classBeanNameReference = classBeanNameReference;
     }
 
-    public Task(String name, ArrayList<FormField> formFields) {
+    public Task(String name, Collection<FormField> formFields) {
         this.name = name;
-        this.formFields = formFields;
+        this.formFields = formFields == null ? Collections.emptyList() : formFields;
     }
 
     //Getters and setters
@@ -66,12 +68,12 @@ public class Task {
         this.name = name;
     }
 
-    public ArrayList<FormField> getTheFormFields() {
+    public Collection<FormField> getTheFormFields() {
         return formFields;
     }
 
-    public void setFormFields(ArrayList<FormField> formFields) {
-        this.formFields = formFields;
+    public void setFormFields(Collection<FormField> formFields) {
+        this.formFields = formFields == null ? Collections.emptyList() : formFields;
     }
 
 
@@ -112,17 +114,6 @@ public class Task {
             return false;
         if (className != null ? !className.equals(task.className) : task.className != null) return false;
         return classBeanNameReference != null ? classBeanNameReference.equals(task.classBeanNameReference) : task.classBeanNameReference == null;
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", FormFields :" + formFields +
-                ", className='" + className + '\'' +
-                ", classBeanNameReference='" + classBeanNameReference + '\'' +
-                '}';
     }
 
 }

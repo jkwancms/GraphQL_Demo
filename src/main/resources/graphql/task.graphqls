@@ -1,12 +1,3 @@
-type FormField{
-    id: ID!
-    name: String!
-    fieldType: String
-    defaultFieldValue: String
-    fieldValue: String
-    isRequired: Boolean
-}
-
 type Task {
   id: ID!
   name: String!
@@ -16,10 +7,19 @@ type Task {
 }
 
 extend type Query {
-    findAllTasks: [Task]!
+    findAllTasks: [Task]
     countTasks: Long!
 }
 
 extend type Mutation {
-    newTask(name: String!, formFields: [FormField], className: String, classBeanNameReference: String) : Task!
+    newTask(name: String!, formFields: [FormFieldValues], className: String, classBeanNameReference: String) : Task!
+}
+
+input FormFieldValues{
+    id: ID!
+    name: String!
+    fieldType: String
+    defaultFieldValue: String
+    fieldValue: String
+    isRequired: Boolean
 }
