@@ -12,7 +12,7 @@ public class Task {
     private String name;
 
 //    private ArrayList<FormField> formFields;
-    private ArrayList<String> formFields;
+    private ArrayList<FormField> formFields;
 
     private String className;
 
@@ -37,18 +37,14 @@ public class Task {
 //        this.className = className;
 //        this.classBeanNameReference = classBeanNameReference;
 //    }
-    public Task(String name, ArrayList<String> formFields, String className, String classBeanNameReference) {
+    public Task(String name, ArrayList<FormField> formFields, String className, String classBeanNameReference) {
         this.name = name;
         this.formFields = formFields;
         this.className = className;
         this.classBeanNameReference = classBeanNameReference;
     }
 
-//    public Task(String name, ArrayList<FormField> formFields) {
-//        this.name = name;
-//        this.formFields = formFields;
-//    }
-    public Task(String name, ArrayList<String> formFields) {
+    public Task(String name, ArrayList<FormField> formFields) {
         this.name = name;
         this.formFields = formFields;
     }
@@ -70,22 +66,22 @@ public class Task {
         this.name = name;
     }
 
-//    public ArrayList<FormField> getTheFormFields() {
-//        return formFields;
-//    }
-//
-//    public void setTheFormFields(ArrayList<FormField> formFields) {
-//        this.formFields = formFields;
-//    }
-
-
-    public ArrayList<String> getFormFields() {
+    public ArrayList<FormField> getTheFormFields() {
         return formFields;
     }
 
-    public void setFormFields(ArrayList<String> formFields) {
+    public void setFormFields(ArrayList<FormField> formFields) {
         this.formFields = formFields;
     }
+
+
+//    public ArrayList<String> getFormFields() {
+//        return formFields;
+//    }
+//
+//    public void setFormFields(ArrayList<String> formFields) {
+//        this.formFields = formFields;
+//    }
 
     public String getClassName() {
         return className;

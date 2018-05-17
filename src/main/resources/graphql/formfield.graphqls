@@ -1,8 +1,0 @@
-type FormField{
-    id: ID!
-    name: String!
-    fieldType: String
-    defaultFieldValue: String
-    fieldValue: String
-    isRequired: Boolean
-}

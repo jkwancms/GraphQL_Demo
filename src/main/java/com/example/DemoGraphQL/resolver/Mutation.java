@@ -134,7 +134,7 @@ public class Mutation implements GraphQLMutationResolver {
 //        return task;
 //    }
 
-    public Task newTask(String name, ArrayList<String> ListofFormFields , String className, String classBeanNameReference) {
+    public Task newTask(String name, ArrayList<FormField> ListofFormFields , String className, String classBeanNameReference) {
         Task task = new Task();
         task.setName(name);
         task.setClassBeanNameReference(classBeanNameReference);

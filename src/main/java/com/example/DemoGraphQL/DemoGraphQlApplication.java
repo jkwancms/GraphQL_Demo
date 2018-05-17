@@ -83,11 +83,11 @@ public class DemoGraphQlApplication {
 			formFieldRepository.save(tempList);
 			gatewayRepository.save(new Gateway("Exclusive"));
 			sequenceFlowRepository.save(new SequenceFlow("123","456"));
-//			taskRepository.save(new Task("Task 01",tempList,"class 01","Reference 01"));
-			ArrayList<String> StringList= new ArrayList<>();
-			StringList.add("Task String 12");
-			StringList.add("Task String 21");
-			taskRepository.save(new Task("Task 01",StringList,"class 01","Reference 01"));
+			taskRepository.save(new Task("Task 01",tempList,"class 01","Reference 01"));
+//			ArrayList<String> StringList= new ArrayList<>();
+//			StringList.add("Task String 12");
+//			StringList.add("Task String 21");
+//			taskRepository.save(new Task("Task 01",StringList,"class 01","Reference 01"));
 
 		};
 	}
