@@ -8,35 +8,28 @@ public class Query implements GraphQLQueryResolver {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
 //    private TaskRepository taskRepository;
-//    private FormFieldsRepository formFieldsRepository;
+    private FormFieldRepository formFieldRepository;
     private GatewayRepository gatewayRepository;
     private SequenceFlowRepository sequenceFlowRepository;
 
-//    public Query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
-//        this.bookRepository = bookRepository;
-//        this.authorRepository = authorRepository;
-//        this.taskRepository = taskRepository;
-//        this.formFieldsRepository = formFieldsRepository;
-//        this.gatewayRepository = gatewayRepository;
-//        this.sequenceFlowRepository = sequenceFlowRepository;
-//    }
-//
+    //Constructors
 //    public Query(AuthorRepository authorRepository, BookRepository bookRepository) {
 //        this.authorRepository = authorRepository;
 //        this.bookRepository = bookRepository;
 //    }
 
-    public Query(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+    public Query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.gatewayRepository = gatewayRepository;
         this.sequenceFlowRepository = sequenceFlowRepository;
+        this.formFieldRepository = formFieldRepository;
     }
 
 
-//    public Query(TaskRepository taskRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+//    public Query(TaskRepository taskRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
 //        this.taskRepository = taskRepository;
-//        this.formFieldsRepository = formFieldsRepository;
+//        this.formFieldRepository = formFieldRepository;
 //        this.gatewayRepository = gatewayRepository;
 //        this.sequenceFlowRepository = sequenceFlowRepository;
 //    }
@@ -61,9 +54,9 @@ public class Query implements GraphQLQueryResolver {
 //    public Iterable<Task> findAllTasks() {
 //        return taskRepository.findAll();
 //    }
-//    public Iterable<FormField> findAllFormFields() {
-//        return formFieldsRepository.findAll();
-//    }
+    public Iterable<FormField> findAllFormFields() {
+        return formFieldRepository.findAll();
+    }
     public Iterable<Gateway> findAllGateways() {
         return gatewayRepository.findAll();
     }
@@ -74,9 +67,9 @@ public class Query implements GraphQLQueryResolver {
 //    public long countTasks() {
 //        return taskRepository.count();
 //    }
-//    public long countFormFields() {
-//        return formFieldsRepository.count();
-//    }
+    public long countFormFields() {
+        return formFieldRepository.count();
+    }
     public long countGateways() {
         return gatewayRepository.count();
     }

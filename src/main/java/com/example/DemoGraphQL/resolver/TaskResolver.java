@@ -4,12 +4,12 @@
 //import com.coxautodev.graphql.tools.GraphQLResolver;
 //import com.example.DemoGraphQL.model.Author;
 //import com.example.DemoGraphQL.model.Book;
-//import com.example.DemoGraphQL.repository.FormFieldsRepository;
+//import com.example.DemoGraphQL.repository.FormFieldRepository;
 //
 //public class TaskResolver implements GraphQLResolver<Book> {
-//    private FormFieldsRepository formfieldsRepository;
+//    private FormFieldRepository formfieldsRepository;
 //
-//    public TaskResolver(FormFieldsRepository formfieldsRepository) {
+//    public TaskResolver(FormFieldRepository formfieldsRepository) {
 //        this.formfieldsRepository = formfieldsRepository;
 //    }
 //

@@ -5,6 +5,8 @@ type Mutation {
   deleteBook(id: ID!) : Boolean
   updateBookPageCount(pageCount: Int!, id: ID!) : Book!
 
+  newFormField(name: String!, fieldType: String, defaultFieldValue: String, fieldValue: String, isRequired: Boolean) : FormField!
+
   newGateway(type: String) : Gateway!
 
   newSequenceFlow(sourceId: String!, targetId: String!, expression: String) : SequenceFlow!

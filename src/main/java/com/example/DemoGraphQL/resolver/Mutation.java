@@ -5,40 +5,31 @@ import com.example.DemoGraphQL.exception.*;
 import com.example.DemoGraphQL.model.*;
 import com.example.DemoGraphQL.repository.*;
 
-import java.util.List;
-
 public class Mutation implements GraphQLMutationResolver {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
 //    private TaskRepository taskRepository;
-//    private FormFieldsRepository formFieldsRepository;
+    private FormFieldRepository formFieldRepository;
     private GatewayRepository gatewayRepository;
     private SequenceFlowRepository sequenceFlowRepository;
 
-//    public Mutation( AuthorRepository authorRepository,BookRepository bookRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
-//        this.bookRepository = bookRepository;
-//        this.authorRepository = authorRepository;
-//        this.taskRepository = taskRepository;
-//        this.formFieldsRepository = formFieldsRepository;
-//        this.gatewayRepository = gatewayRepository;
-//        this.sequenceFlowRepository = sequenceFlowRepository;
-//    }
-
+    //Constructors
 //    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
 //        this.authorRepository = authorRepository;
 //        this.bookRepository = bookRepository;
 //    }
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
+        this.formFieldRepository = formFieldRepository;
         this.gatewayRepository = gatewayRepository;
         this.sequenceFlowRepository = sequenceFlowRepository;
     }
 
-    //    public Mutation(TaskRepository taskRepository, FormFieldsRepository formFieldsRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+    //    public Mutation(TaskRepository taskRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
 //        this.taskRepository = taskRepository;
-//        this.formFieldsRepository = formFieldsRepository;
+//        this.formFieldRepository = formFieldRepository;
 //        this.gatewayRepository = gatewayRepository;
 //        this.sequenceFlowRepository = sequenceFlowRepository;
 //    }
@@ -84,42 +75,20 @@ public class Mutation implements GraphQLMutationResolver {
     }
 
     //---------------------------- CMF ----------------------------//
-//    public FormField newFormField(String name, String type, String defaultValue, String value, Boolean required) {
-//        FormField ff = new FormField();
-//        ff.setName(name);
-//        ff.setDefaultValue(defaultValue);
-//        ff.setType(type);
-//        ff.setValue(value);
-//        ff.setRequired(required);
-//
-//        formFieldsRepository.save(ff);
-//
-//        return ff;
-//    }
-//
-//    public FormField newFormField(String name, String type, String defaultValue, Boolean required) {
-//        FormField ff = new FormField();
-//        ff.setName(name);
-//        ff.setDefaultValue(defaultValue);
-//        ff.setType(type);
-//        ff.setRequired(required);
-//
-//        formFieldsRepository.save(ff);
-//
-//        return ff;
-//    }
-//
-//    public FormField newFormField(String name) {
-//        FormField ff = new FormField();
-//        ff.setName(name);
-//
-//        formFieldsRepository.save(ff);
-//
-//        return ff;
-//    }
-//
-//
-//
+
+    public FormField newFormField(String name, String fieldType, String defaultFieldValue, String fieldValue, Boolean isRequired){
+        FormField formField = new FormField();
+        formField.setName(name);
+        formField.setFieldType(fieldType);
+        formField.setDefaultFieldValue(defaultFieldValue);
+        formField.setFieldValue(fieldValue);
+        formField.setRequired(isRequired);
+
+        formFieldRepository.save(formField);
+
+        return formField;
+    }
+
     public Gateway newGateway(String type) {
         Gateway gateway = new Gateway();
         gateway.setType(type);
