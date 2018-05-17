@@ -7,7 +7,7 @@ import com.example.DemoGraphQL.repository.*;
 public class Query implements GraphQLQueryResolver {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
-//    private TaskRepository taskRepository;
+    private TaskRepository taskRepository;
     private FormFieldRepository formFieldRepository;
     private GatewayRepository gatewayRepository;
     private SequenceFlowRepository sequenceFlowRepository;
@@ -18,12 +18,13 @@ public class Query implements GraphQLQueryResolver {
 //        this.bookRepository = bookRepository;
 //    }
 
-    public Query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+    public Query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.gatewayRepository = gatewayRepository;
         this.sequenceFlowRepository = sequenceFlowRepository;
         this.formFieldRepository = formFieldRepository;
+        this.taskRepository = taskRepository;
     }
 
 
@@ -51,9 +52,9 @@ public class Query implements GraphQLQueryResolver {
 
     //---------------------------- CMF ----------------------------//
 
-//    public Iterable<Task> findAllTasks() {
-//        return taskRepository.findAll();
-//    }
+    public Iterable<Task> findAllTasks() {
+        return taskRepository.findAll();
+    }
     public Iterable<FormField> findAllFormFields() {
         return formFieldRepository.findAll();
     }
@@ -64,9 +65,9 @@ public class Query implements GraphQLQueryResolver {
         return sequenceFlowRepository.findAll();
     }
 //
-//    public long countTasks() {
-//        return taskRepository.count();
-//    }
+    public long countTasks() {
+        return taskRepository.count();
+    }
     public long countFormFields() {
         return formFieldRepository.count();
     }

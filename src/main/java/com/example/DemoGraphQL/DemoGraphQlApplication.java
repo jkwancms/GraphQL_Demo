@@ -53,8 +53,8 @@ public class DemoGraphQlApplication {
 	}
 
 	@Bean
-	public Query query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
-		return new Query(authorRepository, bookRepository, formFieldRepository, gatewayRepository, sequenceFlowRepository);
+	public Query query(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
+		return new Query(authorRepository, bookRepository, formFieldRepository, gatewayRepository, sequenceFlowRepository, taskRepository);
 	}
 
 //	@Bean
@@ -63,13 +63,13 @@ public class DemoGraphQlApplication {
 //	}
 
 	@Bean
-	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
-		return new Mutation(authorRepository, bookRepository, formFieldRepository, gatewayRepository, sequenceFlowRepository);
+	public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
+		return new Mutation(authorRepository, bookRepository, formFieldRepository, gatewayRepository, sequenceFlowRepository, taskRepository);
 	}
 
 
 	@Bean
-	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+	public CommandLineRunner demo(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
 		return (args) -> {
 			Author author = new Author("Herbert", "Schildt");
 			authorRepository.save(author);
@@ -78,12 +78,16 @@ public class DemoGraphQlApplication {
 
 			//----------------------------------------- CMF -----------------------------------------//
 			FormField ff01 = new FormField("Form Field 1","type 01","01","0101",false);
-			List<FormField> tempList = new ArrayList<>();
+			ArrayList<FormField> tempList = new ArrayList<>();
 			tempList.add(ff01);
 			formFieldRepository.save(tempList);
 			gatewayRepository.save(new Gateway("Exclusive"));
 			sequenceFlowRepository.save(new SequenceFlow("123","456"));
 //			taskRepository.save(new Task("Task 01",tempList,"class 01","Reference 01"));
+			ArrayList<String> StringList= new ArrayList<>();
+			StringList.add("Task String 12");
+			StringList.add("Task String 21");
+			taskRepository.save(new Task("Task 01",StringList,"class 01","Reference 01"));
 
 		};
 	}

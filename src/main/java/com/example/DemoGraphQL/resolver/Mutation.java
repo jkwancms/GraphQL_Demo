@@ -5,10 +5,12 @@ import com.example.DemoGraphQL.exception.*;
 import com.example.DemoGraphQL.model.*;
 import com.example.DemoGraphQL.repository.*;
 
+import java.util.ArrayList;
+
 public class Mutation implements GraphQLMutationResolver {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
-//    private TaskRepository taskRepository;
+    private TaskRepository taskRepository;
     private FormFieldRepository formFieldRepository;
     private GatewayRepository gatewayRepository;
     private SequenceFlowRepository sequenceFlowRepository;
@@ -19,12 +21,13 @@ public class Mutation implements GraphQLMutationResolver {
 //        this.bookRepository = bookRepository;
 //    }
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository, TaskRepository taskRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.formFieldRepository = formFieldRepository;
         this.gatewayRepository = gatewayRepository;
         this.sequenceFlowRepository = sequenceFlowRepository;
+        this.taskRepository = taskRepository;
     }
 
     //    public Mutation(TaskRepository taskRepository, FormFieldRepository formFieldRepository, GatewayRepository gatewayRepository, SequenceFlowRepository sequenceFlowRepository) {
@@ -118,8 +121,8 @@ public class Mutation implements GraphQLMutationResolver {
 
         return sf;
     }
-//
-//    public Task newTask(String name, String className, String classBeanNameReference, List<FormField> ListofFormFields) {
+
+//    public Task newTask(String name, ArrayList<FormField> ListofFormFields , String className, String classBeanNameReference) {
 //        Task task = new Task();
 //        task.setName(name);
 //        task.setClassBeanNameReference(classBeanNameReference);
@@ -130,13 +133,25 @@ public class Mutation implements GraphQLMutationResolver {
 //
 //        return task;
 //    }
-//
-//    public Task newTask(String name) {
-//        Task task = new Task();
-//        task.setName(name);
-//        taskRepository.save(task);
-//
-//        return task;
-//    }
+
+    public Task newTask(String name, ArrayList<String> ListofFormFields , String className, String classBeanNameReference) {
+        Task task = new Task();
+        task.setName(name);
+        task.setClassBeanNameReference(classBeanNameReference);
+        task.setClassName(className);
+        task.setFormFields(ListofFormFields);
+
+        taskRepository.save(task);
+
+        return task;
+    }
+
+    public Task newTask(String name) {
+        Task task = new Task();
+        task.setName(name);
+        taskRepository.save(task);
+
+        return task;
+    }
 
 }

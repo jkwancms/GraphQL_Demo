@@ -1,0 +1,16 @@
+type Task {
+  id: ID!
+  name: String!
+  formFields: [String]
+  className: String
+  classBeanNameReference: String
+}
+
+extend type Query {
+    findAllTasks: [Task]!
+    countTasks: Long!
+}
+
+extend type Mutation {
+    newTask(name: String!, formFields: [String], className: String, classBeanNameReference: String) : Task!
+}
