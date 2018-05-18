@@ -12,3 +12,6 @@ type Mutation {
   newSequenceFlow(sourceId: String!, targetId: String!, expression: String) : SequenceFlow!
 
 }
+
+
+
