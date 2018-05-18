@@ -3,15 +3,20 @@ package com.example.DemoGraphQL;
 import com.example.DemoGraphQL.exception.GraphQLErrorAdapter;
 import com.example.DemoGraphQL.model.*;
 import com.example.DemoGraphQL.repository.*;
-import com.example.DemoGraphQL.resolver.*;
-import graphql.*;
+import com.example.DemoGraphQL.resolver.BookResolver;
+import com.example.DemoGraphQL.resolver.Mutation;
+import com.example.DemoGraphQL.resolver.Query;
+import com.example.DemoGraphQL.resolver.TaskResolver;
+import graphql.ExceptionWhileDataFetching;
+import graphql.GraphQLError;
 import graphql.servlet.GraphQLErrorHandler;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
@@ -89,10 +94,6 @@ public class DemoGraphQlApplication {
 			gatewayRepository.save(new Gateway("Exclusive"));
 			sequenceFlowRepository.save(new SequenceFlow("123","456"));
 			taskRepository.save(new Task("Task 01",tempList,"class 01","Reference 01"));
-//			ArrayList<String> StringList= new ArrayList<>();
-//			StringList.add("Task String 12");
-//			StringList.add("Task String 21");
-//			taskRepository.save(new Task("Task 01",StringList,"class 01","Reference 01"));
 
 		};
 	}

@@ -68,7 +68,7 @@ public class Task {
         this.name = name;
     }
 
-    public Collection<FormField> getTheFormFields() {
+    public Collection<FormField> getFormFields() {
         return formFields;
     }
 
